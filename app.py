@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 import cv2
 import numpy as np
@@ -25,3 +26,7 @@ def upload_image():
     ]
 
     return jsonify({"detected_objects": results})
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # fallback to 5000 for local testing
+    app.run(host='0.0.0.0', port=port)
